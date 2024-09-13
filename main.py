@@ -33,6 +33,7 @@ async def daily_2137():
         wait_time = (then-now).total_seconds()
         await asyncio.sleep(wait_time)
         channel = bot.get_channel(1284164179586056232)
+        await ctx.send("Wybiła Godzina Papieżowa!")
         await channel.send(random.choice(links["storage"]))
         
 @bot.event
