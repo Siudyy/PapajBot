@@ -33,7 +33,6 @@ async def daily_2137():
         wait_time = (then-now).total_seconds()
         await asyncio.sleep(wait_time)
         channel = bot.get_channel(1284164179586056232)
-        await ctx.send("Wybiła Godzina Papieżowa!")
         await channel.send(random.choice(links["storage"]))
         
 @bot.event
@@ -41,6 +40,19 @@ async def on_ready():
     print("PAPIEŻO BOT")
     await daily_2137()
 
+async def daily_2137():
+    while True:
+        now = datetime.now().replace(second=0, microsecond=0)
+        then = now.replace(hour=21, minute=37, second=0, microsecond=0)
+        wait_time = (then-now).total_seconds()
+        
+        if wait_time < 0:
+            wait_time += timedelta(days=1).total_seconds()
+
+        await asyncio.sleep(wait_time)
+        channel = bot.get_channel(1284164179586056232)
+        await channel.send(random.choice(links["storage"]))
+        await asyncio.sleep(120)
+
 if __name__ == "__main__":
     bot.run(token=TOKEN)
-
