@@ -27,6 +27,9 @@ async def Papajowa(ctx):
     await ctx.send(random.choice(links["storage"]))
 
 async def daily_2137():
+    global running
+    running = True
+    
     while True:
         now = datetime.now().replace(second=0, microsecond=0)
         then = now.replace(hour=21, minute=37, second=0, microsecond=0)
@@ -44,7 +47,8 @@ async def daily_2137():
 @bot.event
 async def on_ready():
     print("PAPIEŻO BOT")
-    await daily_2137()
+    if not running:
+        bot.loop.create_task((daily_2137))
 
 if __name__ == "__main__":
     bot.run(token=TOKEN)
