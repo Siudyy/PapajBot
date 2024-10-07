@@ -48,7 +48,7 @@ async def daily_2137():
 async def on_ready():
     print("PAPIEŻO BOT")
     if not running:
-        bot.loop.create_task((daily_2137))
+        await daily_2137()
 
 if __name__ == "__main__":
     bot.run(token=TOKEN)
