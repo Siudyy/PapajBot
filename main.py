@@ -26,10 +26,7 @@ async def SendMessage(ctx):
 async def Papajowa(ctx):
     await ctx.send(random.choice(links["storage"]))
 
-async def daily_2137():
-    global running
-    running = True
-    
+async def daily_2137():    
     while True:
         now = datetime.now().replace(second=0, microsecond=0)
         then = now.replace(hour=21, minute=37, second=0, microsecond=0)
@@ -42,13 +39,12 @@ async def daily_2137():
         channel = bot.get_channel(1284164179586056232)
         await channel.send("Wybiła Godzina Papieżowa!")
         await channel.send(random.choice(links["storage"]))
-        await asyncio.sleep(120)
+        await asyncio.sleep(360)
 
 @bot.event
 async def on_ready():
     print("PAPIEŻO BOT")
-    if not running:
-        await daily_2137()
+    await daily_2137()
 
 if __name__ == "__main__":
     bot.run(token=TOKEN)
