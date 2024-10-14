@@ -27,7 +27,7 @@ async def Papajowa(ctx):
     await ctx.send(random.choice(links["storage"]))
 
 async def daily_2137():
-    global is_running = True;    
+    global is_running = True    
     while True:
         now = datetime.now().replace(second=0, microsecond=0)
         then = now.replace(hour=21, minute=37, second=0, microsecond=0)
