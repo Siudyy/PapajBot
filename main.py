@@ -8,7 +8,7 @@ from nextcord import Intents
 from nextcord.ext import commands
 from datetime import datetime, timedelta
 
-
+is_running = False
 load_dotenv()
 TOKEN: Final[str] = os.getenv('DISCORD_TOKEN')
 
@@ -26,7 +26,8 @@ async def SendMessage(ctx):
 async def Papajowa(ctx):
     await ctx.send(random.choice(links["storage"]))
 
-async def daily_2137():    
+async def daily_2137():
+    global is_running = True;    
     while True:
         now = datetime.now().replace(second=0, microsecond=0)
         then = now.replace(hour=21, minute=37, second=0, microsecond=0)
@@ -44,7 +45,8 @@ async def daily_2137():
 @bot.event
 async def on_ready():
     print("PAPIEŻO BOT")
-    await daily_2137()
+    while not is_running:
+        await daily_2137()
 
 if __name__ == "__main__":
     bot.run(token=TOKEN)
